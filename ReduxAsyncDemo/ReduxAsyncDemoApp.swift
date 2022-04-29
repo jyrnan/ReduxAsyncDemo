@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ReduxAsyncDemoApp: App {
+    @StateObject var store = Store()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(store)
         }
     }
 }
+
+
