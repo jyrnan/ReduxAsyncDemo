@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AppCommand {
-    func execute(in store: Store) -> AppAction
+    func execute(in store: Store) async throws -> AppAction
 }
 
 extension AppState {
@@ -21,5 +21,15 @@ struct AppCommand_Print: AppCommand {
         print(number)
         
         return .empty
+    }
+}
+
+struct AppCommand_GetJSON: AppCommand {
+    func execute(in store: Store) async throws -> AppAction {
+        let url = URL(string: "https://www.apple.com")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let string = String(data: data, encoding: .utf8) ?? "NULL"
+        
+        return .updateString(string: string)
     }
 }

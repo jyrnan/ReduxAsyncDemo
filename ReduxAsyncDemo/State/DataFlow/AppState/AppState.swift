@@ -9,4 +9,5 @@ import Foundation
 
 struct AppState {
     var number: Int = 0
+    var string: String = "Hello world"
 }

@@ -11,7 +11,12 @@ struct ContentView: View {
     @EnvironmentObject var store: Store
     
     var body: some View {
+        ScrollView{
+            
+            
         VStack{
+            Text(store.appState.string)
+                .padding()
             Text("Hello, world! \(store.appState.number)")
                 .padding()
             Button {
@@ -19,8 +24,13 @@ struct ContentView: View {
             } label: {
                 Text("Up")
             }
+            Button {
+                store.dispatch(.getJSON)
+            } label: {
+                Text("getJSON")
+            }
         }
-        
+    }
     }
 }
 

@@ -9,7 +9,11 @@ import SwiftUI
 
 @main
 struct ReduxAsyncDemoApp: App {
-    @StateObject var store = Store()
+    @StateObject var store: Store = Store()
+    
+//    init(){
+//        _store = StateObject(wrappedValue: Store())
+//    }
     
     var body: some Scene {
         WindowGroup {

@@ -11,5 +11,8 @@ enum AppAction {
     case empty
     
     case increaseNumber(number: Int)
+    case updateString(string: String)
+    
+    case getJSON
     
 }

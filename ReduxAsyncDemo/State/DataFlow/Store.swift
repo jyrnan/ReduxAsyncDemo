@@ -7,25 +7,28 @@
 
 import Foundation
 
-
+@MainActor
 class Store: ObservableObject {
-    @Published var appState = AppState()
+    @Published private(set) var appState = AppState()
     
     func dispatch(_ action: AppAction) {
         
-        let result = reduce(state: appState, action: action)
-        appState = result.0
-        if let command = result.1 {
-            let action = command.execute(in: self)
-            dispatch(action)
+        if let command = reduce(state: &appState, action: action) {
+            Task {
+                do {
+                    let action = try await command.execute(in: self)
+                    dispatch(action)
+                } catch {
+                    print(error)
+                }
+            }
         }
     }
 }
 
 extension Store {
     
-    func reduce(state: AppState, action: AppAction) -> (AppState, AppCommand?){
-        var appState = state
+    func reduce(state: inout AppState, action: AppAction) -> AppCommand? {
         var appCommand: AppCommand?
         
         switch action {
@@ -33,10 +36,17 @@ extension Store {
             break
             
         case .increaseNumber(let number):
-            appState.number += number
+            state.number += number
             appCommand = AppCommand_Print(number: number)
+            
+        case .updateString(let string):
+            state.string = string
+            
+        case .getJSON:
+            appCommand = AppCommand_GetJSON()
+            
         }
         
-        return (appState, appCommand)
+        return appCommand
      }
 }
