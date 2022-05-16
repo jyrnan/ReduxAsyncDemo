@@ -18,6 +18,8 @@
 		4B4695FB281BBC0600C79D69 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4695FA281BBC0600C79D69 /* AppState.swift */; };
 		4B4695FD281BBC9200C79D69 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4695FC281BBC9200C79D69 /* AppAction.swift */; };
 		4B4695FF281BBCB900C79D69 /* AppCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4695FE281BBCB900C79D69 /* AppCommand.swift */; };
+		4B469601281BF97500C79D69 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B469600281BF97500C79D69 /* AppError.swift */; };
+		4B469603281DFC3600C79D69 /* Store+Reduce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B469602281DFC3600C79D69 /* Store+Reduce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		4B4695FA281BBC0600C79D69 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4B4695FC281BBC9200C79D69 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		4B4695FE281BBCB900C79D69 /* AppCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommand.swift; sourceTree = "<group>"; };
+		4B469600281BF97500C79D69 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		4B469602281DFC3600C79D69 /* Store+Reduce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Reduce.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,9 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				4B4695F8281BBBB400C79D69 /* Store.swift */,
+				4B469602281DFC3600C79D69 /* Store+Reduce.swift */,
 				4B4695FC281BBC9200C79D69 /* AppAction.swift */,
 				4B4695F6281BBB3900C79D69 /* AppState */,
 				4B4695F7281BBB4B00C79D69 /* AppCommand */,
+				4B469604281DFFF600C79D69 /* AppError */,
 			);
 			path = DataFlow;
 			sourceTree = "<group>";
@@ -169,6 +175,14 @@
 				4B4695FE281BBCB900C79D69 /* AppCommand.swift */,
 			);
 			path = AppCommand;
+			sourceTree = "<group>";
+		};
+		4B469604281DFFF600C79D69 /* AppError */ = {
+			isa = PBXGroup;
+			children = (
+				4B469600281BF97500C79D69 /* AppError.swift */,
+			);
+			path = AppError;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +320,9 @@
 				4B4695CD281BB88500C79D69 /* ContentView.swift in Sources */,
 				4B4695FD281BBC9200C79D69 /* AppAction.swift in Sources */,
 				4B4695CB281BB88500C79D69 /* ReduxAsyncDemoApp.swift in Sources */,
+				4B469603281DFC3600C79D69 /* Store+Reduce.swift in Sources */,
 				4B4695FB281BBC0600C79D69 /* AppState.swift in Sources */,
+				4B469601281BF97500C79D69 /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

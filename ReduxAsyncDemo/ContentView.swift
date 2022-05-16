@@ -10,34 +10,47 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var store: Store
     
+    @AppStorage("isLogined") var isLogined: Bool = true
+    
     var body: some View {
-        ScrollView{
+        NavigationView{
             
-            
-        VStack{
-            Text(store.appState.string)
-                .padding()
-            Text("Hello, world! \(store.appState.number)")
-                .padding()
-            Button {
-                store.dispatch(.increaseNumber(number: 1))
-            } label: {
-                Text("Up")
+            ScrollView{
+                
+                VStack{
+                    Text(store.appState.string)
+                        .padding()
+                    
+                    Text("\(isLogined == true ? "Logined" : "Not login"):  \(store.appState.number)")
+                        .padding()
+                    
+                    Button {
+                        isLogined.toggle()
+                    } label: {
+                        Text("Up")
+                            .padding()
+                    }
+                    
+                    Button {
+                        store.dispatch(.getJSON(url: URL(string: "https://www.twitter.com")!))
+                        
+                    } label: {
+                        Text("getJSON")
+                            .padding()
+                    }
+                }
+                
             }
-            Button {
-                store.dispatch(.getJSON)
-            } label: {
-                Text("getJSON")
-            }
+            .background(isLogined == true ? Color.orange : Color.red)
+            .navigationTitle("ReduxDemo")
         }
-    }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var store = Store()
+    @AppStorage(wrappedValue: false, "isLogined") var isLogined
     static var previews: some View {
         ContentView()
-            .environmentObject(store)
+            .environmentObject(Store())
     }
 }

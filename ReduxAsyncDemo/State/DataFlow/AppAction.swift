@@ -10,9 +10,13 @@ import Foundation
 enum AppAction {
     case empty
     
-    case increaseNumber(number: Int)
-    case updateString(string: String)
+    case setState(state: AppState)
     
-    case getJSON
+    case setNumber(number: Int)
+    case setString(string: String)
+    
+    case getJSON(url: URL)
+    
+    case generateRandomNumber
     
 }

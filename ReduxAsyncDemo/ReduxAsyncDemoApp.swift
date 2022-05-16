@@ -9,11 +9,13 @@ import SwiftUI
 
 @main
 struct ReduxAsyncDemoApp: App {
-    @StateObject var store: Store = Store()
+    @StateObject var store: Store
     
-//    init(){
-//        _store = StateObject(wrappedValue: Store())
-//    }
+    @AppStorage("isLogined") var isLogined: Bool = false
+    
+    init(){
+        _store = StateObject(wrappedValue: Store())
+    }
     
     var body: some Scene {
         WindowGroup {
